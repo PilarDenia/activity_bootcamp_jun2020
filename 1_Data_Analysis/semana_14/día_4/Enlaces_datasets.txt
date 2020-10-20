@@ -1,0 +1,17 @@
+
+Enlaces a datasets
+
+https://datos.gob.es/es/catalogo
+https://datos.madrid.es/portal/site/egob
+https://datasetsearch.research.google.com/
+https://data.europa.eu/euodp/en/data
+https://opendata.esri.es/
+https://knoema.es/atlas/topics/Companies/datasets
+https://data.nasa.gov/browse?=limitto=datasets
+https://registry.opendata.aws/
+https://www.kaggle.com/datasets
+https://data.fivethirtyeight.com/
+https://www.data.gov/
+http://archive.ics.uci.edu/ml/index.php
+https://github.com/jdorfman/awesome-json-datasets
+https://github.com/awesomedata/awesome-public-datasets
