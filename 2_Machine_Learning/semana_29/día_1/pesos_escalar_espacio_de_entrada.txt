@@ -1,0 +1,117 @@
+----------------------------------------------------
+procesado del espacio de entrada (NO DE SALIDA)
+---------------------------------------------------- 
+
+w0 + w1 x1 + w2 x2 = y gorrito
+
+w0 + w1nuevo (x1nuevo) + w2nuevo (x2nuevo) = y gorrito
+
+
+x1   x2  yreal
+
+7    18   5
+
+x1nuevo    x2nuevo   yreal
+0.28        -0.12       5
+
+píxels --> [0,1]
+
+
+x1nuevo    x2nuevo   yreal
+0.28        -0.12       5
+
+----------------------------------------------------------
+train - test (temporal)
+-----------------------------------------------------------
+X 		y
+este mes	el mes siguiente
+
+septiembre - octubre - noviembre - diciembre - enero - febrero
+
+SIGUIENTE MES --> quiero predecir las ventas totales que TENDRÉ EL SIGUIENTE MES
+Quiero predecir las ventas totales que tendré EL SIGUIENTE MES --> el target con el que trabajáis son las ventas cerradas DEL SIGUIENTE MES
+
+quiero predecir --> ventas en el siguiente mes
+
+entreno --> diciembre (miro mis variables de diciembre, "mi X", miro las ventas totales de enero, "mi y")
+
+entrenamiento y test:
+X : cantidad de gente que entra en la tienda, artículos vendidos en oferta, tiempo que pasas en la tienda (acumulado en diciembre)
+y : ventas totales en enero
+
+predecir: febrero
+X : enero (ya lo sé, estoy en febrero)
+predice : las ventas totales de febrero 
+
+¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡DIFERENCIA!!!!!!!!!!!!!!!!!!!!!!!! (EL "NORMAL" con train_test_split)
+
+Quiero predecir las ventas totales que tendré ESTE MES --> el target con el que trabajáis son las ventas cerradas DE ESE MES
+si yo cojo enero, y le hago un train_test_split --> aprendo con datos de enero, y el target de enero
+si cogéis todo el mes y hacéis un 80%-20%. Luego lo que queréis es predecir 
+llega febrero, hoy es 6 de febrero. El 6 de febrero no tengo todo febrero
+
+
+X 		y
+este mes	este mes
+
+CANTIDAD DE MUESTRAS!!!!!!!!!!!
+entreno con: diciembre y enero --> FIJO el número de columnas, las filas, cuantas más, mejor
+
+x1: cantidad de gente que entra en la tienda, x2:artículos vendidos en oferta, x3: tiempo que pasas en la tienda
+
+Puedo entrenar con varios meses --> Mi modelo está LISTO cuando yo tenga fijado w1, w2 y w3
+
+día	x1	x2	x3	y
+1dic	2	6	8	11
+2dic	6	8	4	12
+3dic	15	19	-3	22
+...
+31dic 	54	2	11	32
+1ene	12	22	75	80
+...
+31ene	9	6	2	8
+
+
+
+Yo tengo un modelo que ha aprendido a predecir las ventas a final de mes, x1, x2 y x3
+
+prediciendo las compras totales a final de mes
+
+día	x1	x2	x3
+1feb	22	23	31 --> y gorrito = 25 
+2feb	25	79	58 --> y gorrito = 22
+
+ejecución puede ser diaria, puede ser semanal, puede ser mensual
+
+día	x1	x2	x3
+1feb	22	23	31 --> y gorrito = 25 
+2feb	25	79	58 --> y gorrito = 22
+...
+28feb	4	6	8 --> y gorrito = 9
+
+
+día	id_cliente	x1	x2	x3
+1feb	123		22	23	31 --> y gorrito = 25 
+1feb	456		22	23	31 --> y gorrito = 25 
+2feb	123		25	79	52 --> y gorrito = 21
+2feb	456		29	79	58 --> y gorrito = 8
+...
+28feb	4	6	8 --> y gorrito = 9
+
+PROBLEMA que puedo tener!
+
+x1 es "compras totales del mes"
+
+
+1) a cada mes le voy a incluir una variable (una columna nueva) que sea la tendencia respecto a los meses anteriores (info del mes-1, mes-2, mes-3)
+2) entreno con varios meses anteriores. Luego entreno con mes-1 (que tiene dentro info de su mes-1, mes-2, mes-3), con el mes-2 también está dentro del train
+en las filas (que tiene dentro info de su mes-1, mes-2, mes-3)
+
+
+
+
+
+
+
+
+
